@@ -1,0 +1,78 @@
+{% extends "base.html" %}{% load static %}
+
+
+<div class="wrapper">
+    {% block header %}
+    <div class="content-header">
+        <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active">Acceuil</li>
+            <li class="breadcrumb-item"><a href="#">choix</a></li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+    {% endblock header %}
+
+    {% block mainContent %}
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card-body p-0">
+
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 col-md-10">
+                                    <div class="card bg-white shadow">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-cogs fa-5x text-primary"></i>
+                                            <h3 class="mt-4">CHOIX</h3>
+                                            <p>Choisissez un formulaire</p>
+                                            <div class="text-center mt-4">
+                                                <div class="row">
+                                                    {% if user.is_gestion %}
+                                                    <div class="col-md-4 mb-3 mb-md-0">
+                                                        <a href="{% url "generales" projet.id %}" class="btn btn-primary btn-lg btn-block">INFORMATIONS GÉNÉRALES</a>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3 mb-md-0">
+                                                        <a href="{% url "activites" projet.id %}" class="btn btn-primary btn-lg btn-block">PLANIFICATION OPÉRATIONNELLE</a>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <a href="{% url "activitesplus" projet.id %}" class="btn btn-primary btn-lg btn-block">SUIVI DES ACTIVITÉS</a>
+                                                    </div>
+                                                    {% elif user.is_user %}
+                                                    <div class="col-6">
+                                                        <a href="{% url "activites" projet.id %}" class="btn btn-primary btn-lg btn-block">PLANIFICATION OPÉRATIONNELLE</a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <a href="{% url "activitesplus" projet.id %}" class="btn btn-primary btn-lg btn-block">SUIVI DES ACTIVITÉS</a>
+                                                    </div>
+                                                    {% else %}
+                                                    <span></span>
+                                                    {% endif %}
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+            
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock mainContent %}
+
+</div>
+
+{% block js %}
+<script></script>
+{% endblock js %}

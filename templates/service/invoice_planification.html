@@ -1,0 +1,64 @@
+{% load static %}
+<div class="wrapper">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header bg-white">
+              <h5 class="text-center mb-0">
+                <strong>SYNTHÈSE GLOBALE PLANIFICATION</strong>
+              </h5>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                {% for activite in activites_groupees %}
+                <div class="row mx-0 border-bottom py-3">
+                  <div class="col-md-3 col-lg-2 mb-2 mb-md-0">
+                    <strong>Titre :</strong>
+                    <p class="text-break">{{ activite.titre }}</p>
+                  </div>
+                  <div class="col-md-2 col-lg-1 mb-2 mb-md-0">
+                    <strong>Unité physique :</strong>
+                    <p class="text-break">{{ activite.unite_physique }}</p>
+                  </div>
+                  <div class="col-md-2 col-lg-1 mb-2 mb-md-0">
+                    <strong>Quantité prévue :</strong>
+                    <p class="text-break">{{ activite.quantite_prevue }}</p>
+                  </div>
+                  <div class="col-md-3 col-lg-2 mb-2 mb-md-0">
+                    <strong>Période prévue :</strong>
+                      <p class="text-break"><strong>Date de début de l'activité : </strong> {{ activite.periode_prevue_debut }}</p>
+                      <p class="text-break"><strong>Date de fin de l'activité : </strong> {{ activite.periode_prevue_fin }}</p>
+                  </div>
+                  <div class="col-md-2 col-lg-1 mb-2 mb-md-0">
+                    <strong>Responsable :  </strong>
+                    <p class="text-break">{{ activite.responsable }}</p>
+                  </div>
+                  <div class="col-md-3 col-lg-1 mb-2 mb-md-0">
+                    <strong>Budget total prévue :</strong>
+                    <p class="text-break">{{ activite.budget_total }}</p>
+                  </div>
+                  <div class="col-md-3 col-lg-1 mb-2 mb-md-0">
+                    <strong>Part Etat Burkina Faso :</strong>
+                    <p class="text-break">{{ activite.part_burkina }}</p>
+                  </div>
+                  <div class="col-md-6 col-lg-3 mb-2 mb-md-0">
+                    <strong>Partenaires :</strong>
+                    <ul class="list-unstyled mb-0">
+                      {% for partenaire in activite.partenaires %}
+                      <li>Nom du partenaire : {{ partenaire.nom }}</li>
+                      <li>Part du partenaire : {{ partenaire.part }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
